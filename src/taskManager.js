@@ -126,3 +126,11 @@ export function isDuplicate(tasks, title) {
   const normalized = title.trim().toLowerCase();
   return tasks.some(t => t.title.toLowerCase() === normalized);
 }
+
+// ------------------------------------------------------------
+// Ordenação (Exercício 6)
+// ------------------------------------------------------------
+export function sortTasks(tasks) {
+  // Cria uma cópia com spread para garantir a imutabilidade antes do sort
+  return [...tasks].sort((a, b) => Number(a.completed) - Number(b.completed));
+}
