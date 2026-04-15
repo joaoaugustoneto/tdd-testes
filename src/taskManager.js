@@ -134,3 +134,13 @@ export function sortTasks(tasks) {
   // Cria uma cópia com spread para garantir a imutabilidade antes do sort
   return [...tasks].sort((a, b) => Number(a.completed) - Number(b.completed));
 }
+
+// ------------------------------------------------------------
+// Busca (Exercício 7)
+// ------------------------------------------------------------
+export function searchTasks(tasks, query) {
+  if (!query) return [...tasks]; // Se a query for vazia, retorna cópia de tudo
+  
+  const q = query.toLowerCase();
+  return tasks.filter(t => t.title.toLowerCase().includes(q));
+}
