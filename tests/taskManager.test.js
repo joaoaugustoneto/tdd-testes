@@ -12,6 +12,7 @@ import {
   resetId,
   validatePriority,
   filterByPriority,
+  isDuplicate,
 } from '../src/taskManager.js';
 
 // ============================================================
@@ -158,6 +159,11 @@ describe('addTask', () => {
 
   it('deve lançar erro para título numérico', () => {
     expect(() => addTask([], 42)).toThrow('Título inválido');
+  });
+
+  it('deve lançar erro se a tarefa já existir (case-insensitive)', () => {
+    const tasks = addTask([], 'Estudar');
+    expect(() => addTask(tasks, 'estudar')).toThrow('Tarefa duplicada');
   });
 });
 
@@ -404,5 +410,20 @@ describe('filterByPriority', () => {
     expect(result).toHaveLength(2);
     expect(result[0].title).toBe('T1');
     expect(result[1].title).toBe('T3');
+  });
+});
+
+// ============================================================
+// Exercício 5: Duplicatas
+// ============================================================
+describe('isDuplicate', () => {
+  it('deve identificar duplicatas ignorando case e espaços', () => {
+    resetId();
+    const tasks = [createTask('Estudar')];
+
+    expect(isDuplicate(tasks, 'Estudar')).toBe(true);
+    expect(isDuplicate(tasks, 'estudar')).toBe(true);
+    expect(isDuplicate(tasks, '  ESTUDAR  ')).toBe(true);
+    expect(isDuplicate(tasks, 'Trabalhar')).toBe(false);
   });
 });
