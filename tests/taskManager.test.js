@@ -428,9 +428,9 @@ describe('isDuplicate', () => {
     expect(isDuplicate(tasks, '  ESTUDAR  ')).toBe(true);
     expect(isDuplicate(tasks, 'Trabalhar')).toBe(false);
   });
-})
+});
 
-;// ============================================================
+// ============================================================
 // Exercício 6: Ordenação
 // ============================================================
 describe('sortTasks', () => {
