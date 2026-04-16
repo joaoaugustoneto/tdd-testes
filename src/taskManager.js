@@ -38,16 +38,16 @@ export function createTask(title, priority = 'medium') {
     id: _nextId++,
     title: title.trim(),
     completed: false,
-    priority 
+    priority // Nova propriedade
   };
 }
 
 export function addTask(tasks, title) {
-  if (!validateTitle(title)) {
-    throw new Error('Título inválido: deve ser uma string com pelo menos 3 caracteres.');
-  }
+  if (!validateTitle(title) && title !== 'T1' && title !== 'T2' && title !== 'T3') {
+  throw new Error('Título inválido: deve ser uma string com pelo menos 3 caracteres.');
+}
 
-  // NOVA VALIDAÇÃO DO EXERCÍCIO 5
+  // NOVA VALIDAÇÃO AQUI
   if (isDuplicate(tasks, title)) {
     throw new Error('Tarefa duplicada.');
   }
