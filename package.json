@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/joaoaugustoneto/tdd-testes#readme",
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.4",
     "@vitest/ui": "^4.1.4",
     "vitest": "^4.1.4"
   }
